@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  const obj ={
+    foo:'foo val',
+    bar:'bar val',
+    baz:'baz val'
+  }
+  const a=obj.foo,b=obj.bar,c=obj.baz;
+  // 将数组中的存在的元素解构出来
+  // 加冒号就是传值给那个对象
+  const {foo,baz,bar:wq}=obj;
+
+  const obj1={
+    p:['hello',{msg:"World"}]
+  }
+  const {p:[hello,world]}=obj1;
+  </script>
+</body>
+</html>

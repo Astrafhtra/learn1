@@ -249,3 +249,29 @@ img{
     transform: scale(1);
   }
 }
+.layer .ft .btn::before{
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  margin-left: 35px;
+  width: 51px;
+  height: 12px;
+}
+.layer1 .ft .btn1::before{
+
+  background:url(http://mat1.gtimg.com/sports/worldcup2014/match/btn_arr_1.png);
+  background-size: 51px 12px;
+}
+.layer1 .ft .btn2::before{
+  background: url(http://mat1.gtimg.com/sports/worldcup2014/match/btn_arr_2.png);
+  background-size: 51px 12px;
+}
+.layer1 .ft .btn3::before{
+  background: url(http://mat1.gtimg.com/sports/worldcup2014/match/btn_arr_3.png);
+  background-size: 51px 12px;
+}
+.layer1 .ft .btn4::before{
+  background: url(http://mat1.gtimg.com/sports/worldcup2014/match/btn_arr_4.png);
+  background-size: 51px 12px;
+}
