@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Numbet</title>
+</head>
+<body>
+  <script>
+  //   Number.prototype.add = function(num){
+  //     // console.log('and 来了');
+  //     return this + num;
+  //   }
+  //  var numberObj = new Number(10);
+  //  console.log(numberObj.__proto__);
+  //  console.log(numberObj.add(3));
+
+  Number.prototype.add = function(num){
+      // console.log('and 来了');
+      return this + num;
+    }
+  Number.prototype.multiply = function(num){
+      // console.log('and 来了');
+      return this * num;
+    }
+   var numberObj = new Number(3);
+   console.log(numberObj.__proto__);
+   console.log((3).add(5).multiply(5));
+
+  </script>
+</body>
+</html>
