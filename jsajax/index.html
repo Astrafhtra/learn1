@@ -24,6 +24,8 @@
         console.log(xhr.responseText) 
       }
     }
+    // js是单线程会出现异步
+    // 先打印555 再打印个人信息 ，个人信息异步执行需要时间
     console.log(555)
   </script>
 </body>
