@@ -19,14 +19,50 @@
     xhr.send()
     // console.log(xhr.responseText)
     // console.log(xhr.readyState,xhr.status)
-    xhr.onreadystatechange = function(){
+    var p = new Promise((resolve,reject)=>{
+      xhr.onreadystatechange = function(){
       if(xhr.readyState == 4 && xhr.status == 200){
         console.log(xhr.responseText) 
+        resolve(xhr.responseText)
       }
     }
+    })
+    function xq(){
+      return new Promise((resolve,reject)=>{
+      setTimeout(()=>{
+        console.log('猛哥要相亲了！')
+        resolve('相亲成功')
+      },1000)
+    })
+    }
+    // xq();
+    function marry(){
+      return new Promise((resolve,reject)=>{
+      setTimeout(()=>{
+      console.log('猛哥结婚')
+    },500)
+      })
+    }
+    // p 
+    //  .then(xq)
+    //  .then(marry)
+    //  .catch((err)=>{
+    //    console.log('猛哥逃婚')
+    //  })
+    // 在.all里面的方法没有执行顺序
+    // Promise.all([p,xq()]).then(marry).catch((err)=>{
+    //   console.log(err)
+    // })
+
+    Promise.race([p,xq(),marry()]).then((value)=>{
+      console.log(value)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
     // js是单线程会出现异步
     // 先打印555 再打印个人信息 ，个人信息异步执行需要时间
-    console.log(555)
+    // console.log(555)
   </script>
 </body>
 </html>
