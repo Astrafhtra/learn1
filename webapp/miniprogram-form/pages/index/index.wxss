@@ -1,0 +1,5 @@
+/* pages/index/index.wxss */
+.formLists{
+  display: flex;
+  justify-content: space-between;
+}

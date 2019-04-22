@@ -1,0 +1,1 @@
+js 有七种假值 : undefind , null , +0 , -0 , NaN , "" , false

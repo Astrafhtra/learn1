@@ -24,4 +24,15 @@
       nextArrow: '<button class="ui next bottom button"><i class="material-icons">chevron_right</i></button>'
     }
   )
+//semart.js
+ $('.ui.sidebar')
+ .sidebar('setting','dimPage',true)
+ .sidebar('attach events','.ui.navbar .menu-icon','show')
+ .sidebar('attach events','.ui.sidebar .close-icon','hidden')
+// siderbar
+ $('.ui.navbar .menu')
+ .clone()
+ .appendTo('.ui.sidebar')
+//  $('.ui.navbar').append();
+
 })();
