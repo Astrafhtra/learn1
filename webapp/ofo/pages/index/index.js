@@ -1,74 +1,72 @@
-// pages/index/index.js
+//index.js
+//获取应用实例
+const app = getApp()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    latitude:28.68,
-    longitude: 115.89
+    latitude: 39.908860,
+    longitude: 116.397390,
+    scale: '16',
+    markers: [
+      {},
+    ]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    wx.getLocation({
-      success: (res)=> {
-        this.setData({
-          longitude:res.longitude,
-          latitude:res.latitude
-        })
-      },
+  //事件处理函数
+  bindViewTap: function () {
+    wx.navigateTo({
+      url: '../logs/logs'
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onReady() {
+    this.mapCtx = wx.createMapContext('myMap')
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  onLoad: function () {
+    wx.getLocation({
+      type: 'gcj02',
+      success: (res) => {
+        this.setData({
+          longitude: res.longitude,
+          latitude: res.latitude
+        })
+        setTimeout(() => {
+          this.mapCtx.getCenterLocation({
+            success: (res) => {
+              this.generateMarkers(res);
+            }
+          })
+        }, 1000)
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  generateMarkers: function (res) {
+    let ran = Math.ceil(Math.random() * 20);
+    let markers = [];
+    for (let i = 0; i < ran; i++) {
+      let marker = {
+        id: i,
+        title: '去这里',
+        iconPath: '/images/map-bicycle.png',
+        width: 52,
+        height: 30
+      }
+      let sign_a = Math.random();
+      let sign_b = Math.random();
+      let a = (Math.ceil(Math.random() * 99)) * 0.00002
+      let b = (Math.ceil(Math.random() * 99)) * 0.00002
+      marker.latitude = sign_a > 0.5 ? res.latitude + a : res.latitude - a;
+      marker.longitude = sign_b > 0.5 ? res.longitude + b : res.longitude - b;
+      markers.push(marker);
+    }
+    this.setData({
+      markers
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  getUserInfo: function (e) {
+    console.log(e)
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
   }
 })
