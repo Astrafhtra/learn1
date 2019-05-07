@@ -18,3 +18,24 @@
         }
       }
     })
+
+    - MVVM 不需要DOM 因为DOM很低效
+    但是要找元素怎么办？ ref属性相当于id
+
+    - 数组
+     Math.random() 0-1 <0.5
+
+    - 组件思想
+      Vue.component('Heroes',{
+        props:{
+          参数: 参数的约束
+        },
+        template:``
+      })
+      组件化思维
+      <Heroes :heroes="heroes"/>
+
+      小程序 src="{{item.src}}":src="item.src"
+      props 
+      ref="allAudio"  (this.$refs.allAudio)
+      wx:for  v-for
