@@ -11,8 +11,7 @@
       class="public-item {{index === 0 ? 'top': ''}} {{index === groupList.length - 1 ? 'bottom' : ''}}"
       wx:for="{{groupList}}"
       wx:key="{{index}}"
-      data-group="{{item}}"
-    >
+      data-group="{{item}}">
       <view class="public-item-name">{{item.name}}</view>
       <view style="display:flex;align-items:center;">
         <image class="creater" src="{{item.createBy.avaterUrl}}"/>
