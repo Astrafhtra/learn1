@@ -5,14 +5,52 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    thumb: '',
+    nickname: '',
+    orders: [],
+    hasAddress: false,
+    address: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let self = this
+    wx.getUserInfo({
+      success: function(res){
+        // success
+        self.setData({
+          thumb: res.userInfo.avatarUrl,
+          nickname: res.userInfo.nickName
+        })
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
 
+    wx.request({
+      url: 'http://www.gdfengshuo.com/api/wx/orders.txt',
+      data: {},
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function(res){
+        // success
+        self.setData({
+          orders: res.data
+        })
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   },
 
   /**
@@ -26,7 +64,43 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let self = this
+    wx.getStorage({
+      key: 'address',
+      success: function(res){
+        // success
+        self.setData({
+          hasAddress: true,
+          address: res.data
+        })
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
+  },
 
+  payOrders() {
+    console.log(123123)
+    wx.requestPayment({
+      timeStamp: '',
+      nonceStr: '',
+      package: '',
+      signType: '',
+      paySign: '',
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   },
 
   /**

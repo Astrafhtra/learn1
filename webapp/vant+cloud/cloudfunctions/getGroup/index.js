@@ -9,7 +9,7 @@ const db = cloud.database({env})
 // 云函数入口函数
 exports.main = async (event, context) => {
   const openId = cloud.getWXContext.OPENID
-  let groupList =await db.collection('user-group')
+  let groupList = await db.collection('user-group')
   .where({
     userId:openId
   })

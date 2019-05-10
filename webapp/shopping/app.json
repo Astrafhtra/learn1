@@ -3,7 +3,9 @@
     "pages/cart/cart",
     "pages/category/category",
     "pages/index/index",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/orders/orders",
+    "pages/address/address"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -46,12 +48,12 @@
       }
     ]
   },
-  "networkTimeout":{
-    "request":10000,
-    "connectSocket":10000,
-    "uploadFile":10000,
-    "downloadFile":10000
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
   },
-  "debug":false,
-  "sitemapLocation":"sitemap.json"
+  "debug": false,
+  "sitemapLocation": "sitemap.json"
 }

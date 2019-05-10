@@ -42,6 +42,7 @@ Page({
    */
   onLoad: function (options) {
     wx.getLocation({
+      type: "gcj02",
       success: (res)=> {
        this.setData({
          longitude:res.longitude,
