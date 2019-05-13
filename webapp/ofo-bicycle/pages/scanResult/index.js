@@ -1,7 +1,8 @@
 // pages/scanresult/index.js
 Page({
   data: {
-    time: 90 // 默认计时时长，这里设短一点，用于调试，ofo app是90s
+    time: 90,// 默认计时时长，这里设短一点，用于调试，ofo app是90s
+    password:1234
   },
   // 页面加载
   onLoad: function (options) {

@@ -7,7 +7,7 @@ Page({
    */
   data: {
     groupName: '',
-    newGroupModal: false
+    newGroupModal:false
   },
   onGroupNameChange(event){
     this.setData({
@@ -42,6 +42,7 @@ Page({
           groupName: self.data.groupName
         },
         success(res){
+          // console.log(res)
           self.setData({
             newGroupModal:false,
             groupName: ''
@@ -56,7 +57,7 @@ Page({
             wx.switchTab({
               url: `/pages/group/group`
             })
-          },1500)
+          },1000)
         },
         fail(error){
           console.log(error)

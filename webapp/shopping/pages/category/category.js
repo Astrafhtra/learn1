@@ -26,9 +26,11 @@ Page({
     })
   },
   touchmove(e){
-    console.log(e)
+    console.log(e.detail.scrollTop)
+    let height = e.detail.scrollTop;
+    var i = Math.ceil(height/555);
     this.setData({
-      
+      curIndex:i
     })
   },
   /**

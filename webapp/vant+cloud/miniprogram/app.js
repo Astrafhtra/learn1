@@ -52,13 +52,15 @@ App({
     })
   },
   globalData:{
-    currentGroupInfo:null,
-    currentGroupList: [],
-    currentBill:null,
-    userInfo:null,
-    shareParam:null,
-    billId:'',
-    userInfoFromCloud: null,
-    userRemark:{}
+   data:{
+     currentGroupInfo: null,
+     currentGroupList: [],
+     currentBill: null,
+     userInfo: null,
+     shareParam: null,
+     billId: '',
+     userInfoFromCloud: null,
+     userRemark: {}
+   }
   }
 })

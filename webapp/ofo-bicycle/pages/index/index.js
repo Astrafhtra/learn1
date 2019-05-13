@@ -10,6 +10,7 @@ Page({
     scale:'18'
   },
   bindcontroltap:function(e){
+    console.log(e)
     switch(e.controlId){
       case 1:
         this.movetoCenter();
@@ -35,6 +36,8 @@ Page({
          
         }
       })
+      case 3:
+
     }
   },
   /**

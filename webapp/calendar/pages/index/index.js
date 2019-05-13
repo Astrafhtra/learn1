@@ -1,15 +1,11 @@
-
-// 陈松涛 2019/5/11 13:53:26
-// import { fail } from "assert";
-
-// miniprogram/pages/group/group.js
+// pages/index/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    groupList:[]
+
   },
 
   /**
@@ -30,27 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //让页面实时更新
-    let self = this;
-    wx.showNavigationBarLoading()
-    wx.cloud.callFunction({
-      name:'getGroup',
-      data:{},
-      success(res){
-        self.setData({
-          groupList:res.result
-          
-        })
-        console.log(res.result)
-      },
-      fail(error){
-        console.log(error);
-      },
-      conmplete(){
-        wx.hideNavigationBarLoading()
-      }
-    })
-    
+
   },
 
   /**

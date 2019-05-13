@@ -7,7 +7,8 @@ Page({
   data: {
     hasList:false,
     carts:[],
-    selectAllStatus:true
+    selectAllStatus:true,
+    selected:true
   },
   selectAll(e){
     let selectAllStatus = this.data.selectAllStatus
@@ -75,6 +76,15 @@ Page({
     }else{
       this.getTotalPrice()
     }
+  },
+  selectList(e){
+    const index = e.target.dataset.index
+    let carts = this.data.carts
+    carts[index].selected = !carts[index].selected
+    this.setData({
+      carts:carts
+    })
+    this.getTotalPrice()
   },
   /**
    * 生命周期函数--监听页面加载
