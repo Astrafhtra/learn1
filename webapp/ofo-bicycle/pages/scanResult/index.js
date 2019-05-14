@@ -1,31 +1,39 @@
 // pages/scanresult/index.js
 Page({
   data: {
-    time: 90,// 默认计时时长，这里设短一点，用于调试，ofo app是90s
-    password:1234
+    time: 5,// 默认计时时长，这里设短一点，用于调试，ofo app是90s
+    password:''
   },
   // 页面加载
   onLoad: function (options) {
-    // 获取解锁密码
+    // for (var i = 0; i < 5; i++) {
+    //   const pos = Math.ceil(Math.random() * 10);
+    //   this.data.password += arr[pos];
+    // }
     this.setData({
-      password: options.password
+      password: (Math.ceil(Math.random() * 10)).toString() + Math.ceil(Math.random() * 10) + (Math.ceil(Math.random() * 10)).toString() + Math.ceil(Math.random() * 10) 
+    })
+    success: wx.showToast({
+      title: '获取密码成功',
+      icon: 'suceess',
+      duration: 8000
     })
     // 设置初始计时秒数
-    let time = 90;
+    let time = 5;
     // 开始定时器
     let timer = setInterval(() => {
-      time--;
-      this.setData({
+        time--;
+        this.setData({
         time:time
       })
       // 读完秒后携带单车号码跳转到计费页
       if (time === 0) {
         clearInterval(this.timer)
         wx.redirectTo({
-          url: '../billing/index?number=' + options.number
+          url: '../billing/index'
         })
         // 清除定时器
-        clearInterval(timer)
+        // clearInterval(timer)
       }
     }, 1000)
   },

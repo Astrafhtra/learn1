@@ -1,0 +1,3 @@
+<!--pages/billing/index.wxml-->
+<input value='{{value}}'/>
+<button>点击</button>
