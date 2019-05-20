@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/billing/index",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/scanResult/index",
-    "pages/billing/index"
+    "pages/scanResult/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
