@@ -12,4 +12,7 @@ describe('test-add',()=>{
     expect(isNaN(add(null,undefined))).to.equal(true);
     expect(isNaN(add({},undefined))).to.equal(true);
   })
+  it('两个字符创数值相加,应该返回其转换类型之后的和',()=>{
+    expect(add('11','22')).to.equal(33);
+  })
 })
