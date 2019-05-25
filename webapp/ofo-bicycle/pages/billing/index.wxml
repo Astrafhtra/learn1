@@ -13,6 +13,6 @@
   </view>
   <view class="endride">
     <button type="warn" bindtap='endride'>结束骑行</button>
-    <button type="primary">回到首页</button>
+    <button type="primary" bindtap="Backhome">回到首页</button>
   </view>
 </view>

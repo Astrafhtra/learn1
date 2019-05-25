@@ -10,7 +10,16 @@ Page({
         minutes: 0,
         seconds: 0
       },
-
+      Backhome(e){
+        wx.redirectTo({
+          url: '../index/index',
+        })
+      },
+      endride(e){
+        wx.navigateTo({
+          url: '',
+        })
+      },
       /**
        * 生命周期函数--监听页面加载
        */

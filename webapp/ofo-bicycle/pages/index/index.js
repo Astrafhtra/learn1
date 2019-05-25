@@ -50,7 +50,13 @@ Page({
           }
         })
       case 3:
-
+        wx.navigateTo({
+          url: '../report/index',
+        })
+      case 5:
+        wx.navigateTo({
+          url: '../My/index',
+        })
     }
   },
   /**
