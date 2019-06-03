@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lifeCycle</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="msg">
+        <div class="msg">{{ msg }}</div>
+    </div>
+    <script>
+        
+        var app = new Vue({
+            el:'#app',
+            data () {
+                return {
+                    msg :'123'
+                }
+            },
+            //mounted 才是页成功挂载上去的时候
+            beforeMount () {
+                console.log('beforeMount')
+                console.log(document.querySelector('#app'))
+            },
+            mounted () {
+                console.log('mounted')
+                console.log(document.querySelector('#app'))
+            },
+            beforeCreate () {
+                console.log('beforeCreate')
+                console.log(document.querySelector('#app'))
+            },
+            created () {
+                console.log('create')
+                console.log(document.querySelector('#app'))
+            },
+            // 必须数据发生变化才有效
+            beforeUpdate () {
+                console.log('beforeUpdate')
+            },
+            updated () {
+                console.log('updated')
+            },
+            // 页面发生跳转的时候 上个页面被销毁
+            beforeDestroy () {
+                console.log('beforeDestroy')
+            },
+            destroyed () {
+                console.log('Destroy')
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

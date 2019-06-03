@@ -5,7 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    picUrls:['../../images/avatar.png','../../images/location.png'],
+    items:[
+      {value:"车锁坏了"},
+      {value:"违规乱停"},
+      {value:"密码不对"},
+      {value:"私锁私用"},
+      {value:"轮胎坏了"},
+      {value:"刹车坏了"},
+      {value:"其他故障"}
+    ]
   },
 
   /**

@@ -1,2 +1,23 @@
-<!--pages/report/index.wxml-->
-<text>pages/report/index.wxml</text>
+<!-- pages/report/index.wxml -->
+<view class="container">
+  <view class="choose">
+    <view class="title">请选择故障类型</view>
+    <checkbox-group bindchange="checkboxChange">
+      <label class="checkbox" wx:for="{{items}}" wx:key="{{index}}">
+        <checkbox value="{{item.value}}" checked="{{items.checked}}"/>
+        {{item.value}}
+      </label>
+    </checkbox-group>
+  </view>
+  <view class="action">
+    <view class="title">拍摄单车附件环境,便于寻找</view>
+    <view class="action-photo">
+      <block wx:for="{{picUrls}}" wx:key="{{index}}">
+        <image src="{{item}}">
+          <icon type="cancel" size="18" color="red"/>
+        </image>
+      </block>
+        
+    </view>
+  </view>
+</view>

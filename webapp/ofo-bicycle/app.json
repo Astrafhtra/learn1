@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/report/index",
     "pages/index/index",
     "pages/logs/logs",
     "pages/scanResult/index",
     "pages/billing/index",
-    "pages/report/index",
     "pages/My/index"
   ],
   "window": {
