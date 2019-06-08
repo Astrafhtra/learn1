@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // promisify
+    // 1. 把某一类特定的异步函数转换为promise的方式调用 
+    // 2. const promiseReadfile = promisify(fs.readfile);
+    // promiseReadfile(path,{})
+    // .then(data=>{})
+    // node
+    // fs.readFile(path,{},(err,data)=>{})
+    // fs.stat(path,(err,data)={})
+
+    const promisify = (func)=>{
+      // promisify return 出去的函数
+      return (...args)=>{
+        return new Promise((resolve,reject)=>{
+          func(...args,(err,result)=>{
+            if(err) reject(err)
+            else{
+              resolve(result);
+            }
+          })
+        })
+      }
+    }
+
+    const delay = promisify ((time,cb)=>{
+      setTimeout(cb,time);
+    })
+    delay(2000)
+    .then(res=>{
+      console.log('hello promise')
+    })
+  </script>
+</body>
+</html>

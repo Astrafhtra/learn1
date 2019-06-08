@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 输入函数名字和参数,给定一个上下文的时候开始调用
+    function call(key,cb){
+      //  t call 调用之后返回的函数
+      return(context)=>{
+        return context[key](cb)
+      }
+    }
+    const arr = [1,2,3,4];
+    // arr.forEach((item)=>{console.log(item)});
+    // const t = call('forEach',(item)=>{
+    //   console.log(item)
+    // })
+
+    const sum = arr.reduce((pre,next)=>pre + next,10);
+    console.log('sum',sum);
+    // t([1,2,3,4,5,6])
+    // const t1 = call('map',x=> x * 2);
+    // console.log(t1([1,2,3,4]))
+    const t2 = call('reduce',(pre,next)=>pre + next,10);
+    console.log('t2返回值',t2(arr));
+  </script>
+</body>
+</html>
