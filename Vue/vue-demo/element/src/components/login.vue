@@ -1,13 +1,15 @@
 <template>
   <div class='login'>
     <div class='container'>
-      <p class='title'>后台管理系统</p>
+      <p class='title'>房屋租赁管理系统</p>
       <div class='msg mt20'>
         <el-input v-model='user' placeholder='请输入账号'></el-input>
       </div>
       <div class='msg mt20'>
         <el-input v-model='password' placeholder='请输入密码'></el-input>
       </div>
+      <el-radio v-model="radio" label="1">租户</el-radio>
+      <el-radio v-model="radio" label="2">住户</el-radio>
       <div class='btn mt20'>
         <el-button type='primary' @click='login'>登录</el-button>
       </div>
@@ -22,7 +24,8 @@ export default {
   data () {
     return {
       user: '',
-      password: ''
+      password: '',
+      radio:'1'
     }
   },
   methods: {

@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="logo">后台管理系统</div>
+    <div class="logo">租户管理系统</div>
     <div class="user-info">
       <el-dropdown @command='handleCommand'>
         <span class="el-dropdown-link">
