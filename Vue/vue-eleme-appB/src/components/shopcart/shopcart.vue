@@ -49,96 +49,65 @@
         </div>
       </transition>
     </div>
+    <!-- 遮罩层 点击购物车的时候，出现的黑色透明的那一层 -->
     <transition name="fade">
       <div class="list-mask" @click="hideList" v-show="listShow"></div>
     </transition>
   </div>
 </template>
+
 <script>
 import BScroll from 'better-scroll'
 export default {
-  props:{
-    selectFoods:{
-      type:Array,
-      default(){
-        return[
+  props: {
+    selectFoods: {
+      type: Array,
+      default () {
+        return [
           {
-            price:10,
-            count:1
+            price: 10,
+            count: 1
           }
         ]
       }
     },
-    deliveryPrice:{
-      type:Number,
-      default:0
+    deliveryPrice: {
+      type: Number,
+      default: 0
     },
-    minPrice:{
-      type:Number,
-      default:0
+    minPrice: {
+      type: Number,
+      default: 0
     }
   },
-  methods:{
-    drop (el) {
-      for (let i = 0; i < this.balls.length; i++) {
-        let ball = this.balls[i]
-        if (!ball.show) {
-          ball.show = true
-          ball.el = el
-          this.dropBalls.push(ball)
-          return
-        }
-      }
-    },
-    toggleList(){},
-    beforeDrop(el){
-      let count = this.balls.length({
-        success: (result) => {
-          while(count --){
-            let ball = this.balls[count]
-            if(ball.show){
-              let rect = ball.el.getBoundingClientRect()
-              let x = rect.left - 32
-              let y = -(window.innerHeight - rect.top -22)
-              el.style.display = ''
-              el.style.webkitTransform = `translate3d(0,${y}px,0)`
-              el.style.transform = `translate3d(0,${y}px,0)`
-              let inner = el.getElementsByClassName('inner-hook')[0]
-              inner.style.webkitTransform = `translate3d(${x}px,0,0)`
-              inner.style.transform = `translate3d(${x}px,0,0)`
-            }
-          }
+  data () {
+    return {
+      balls: [
+        {
+          show: false
         },
-        fail: () => {},
-        complete: () => {}
-      });
-        
-    },
-    dropping(el,done){
-      let rf = el.offsetHeight
-      this.$nextTick(()=>{
-        el.style.webkitTransform = `translate3d(0,0,0)`
-        el.style.transform = `translate3d(0,0,0)`
-        let inner = el.getElementsByClassName('inner-hook')[0]
-        inner.style.webkitTransform = `translate3d(0,0,0)`
-        inner.style.transform = `translate3d(0,0,0)`
-        el.addEventListener('transitionend',done)
-      })
-    },
-    afterDrop(){
-      let ball = this.dropBalls.shift()
-      if(ball){
-        ball.sow = false
-        el.style.display = 'none'
-      }
-    },
-    empty(){},
-    hideList(){}
+        {
+          show: false
+        },
+        {
+          show: false
+        },
+        {
+          show: false
+        },
+        {
+          show: false
+        },
+      ],
+      dropBalls: [],
+      fold: true
+    }
   },
   computed: {
-    totalPrice(){
-      let total = 0
-      this.selectFoods.forEach((food)=>{
+    totalPrice () {
+      // console.log(this.selectFoods)
+      let total = 0;
+      this.selectFoods.forEach((food) => {
         total += food.price * food.count
       })
       return total
@@ -150,58 +119,99 @@ export default {
         return 'enough'
       }
     },
-    totalCount(){
-      let count = 0
-      this.selectFoods.forEach((food)=>{
+    totalCount () {
+      let count = 0;
+      this.selectFoods.forEach((food) => {
         count += food.count
       })
       return count
     },
-    payDesc(){
-      if(this.totalPrice === 0){
+    payDesc () {
+      if (this.totalPrice === 0) {
         return `￥${this.minPrice}元起送`
-      }else if(this.totalPrice < this.minPrice){
+      } else if (this.totalPrice < this.minPrice) {
         let diff = this.minPrice - this.totalPrice
         return `还差￥${diff}元起送`
-      }else{
+      } else {
         return '去结算'
       }
     },
-    listShow(){
-      if(!this.totalCount){
+    listShow () {
+      if (!this.totalCount) {
         this.fold = true
         return false
       }
       let show = !this.fold
-      if(show){
-        this.$nextTick(()=>{
-          if(!this.scroll){
+      if (show) {
+        this.$nextTick(() => {
+          if (!this.scroll) {
             this.scroll = new BScroll(this.$refs.listContent,{
-            click:true
+              click: true
             })
-          }else{
+          } else {
             this.scroll.refresh()
           }
         })
       }
-      return show 
-    }
+      return show
+    },    
   },
-  data(){
-    return{
-      balls:[
-        {show:false},
-        {show:false},
-        {show:false},
-        {show:false},
-        {show:false}
-      ],
-      dropBalls:[],
-      fold:true
-    }
-  }
+  methods: {
+    drop (el) {
+      for (let i = 0; i < this.balls.length; i++) {
+        let ball = this.balls[i]
+        if (!ball.show) {
+          ball.show = true
+          ball.el = el
+          this.dropBalls.push(ball)
+          return
+        }
+      }
+    },
+    toggleList () {},
+    beforeDrop (el) {
+      let count = this.balls.length
+      while (count--) {
+        let ball = this.balls[count]
+        if (ball.show) {
+          let rect = ball.el.getBoundingClientRect();
+          let x = rect.left - 32;
+          let y = -(window.innerHeight - rect.top - 22);
+          el.style.display = '';
+          //在js里面写CSS一定要加兼容
+          el.style.webkitTransform = `translate3d(0,${y}px,0)`;
+          el.style.transform = `translate3d(0,${y}px,0)`;
+          let inner = el.getElementsByClassName('inner-hook')[0];
+          inner.style.webkitTransform = `translate3d(${x}px,0,0)`;
+          inner.style.transform = `translate3d(${x}px,0,0)`;
+        }
+      }
+    },
+    dropping (el,done) {
+      let rf = el.offsetHeight
+      this.$nextTick(() => {
+        el.style.webkitTransform = `translate3d(0,0,0)`;
+        el.style.transform = `translate3d(0,0,0)`;
+        let inner = el.getElementsByClassName('inner-hook')[0];
+        inner.style.webkitTransform = `translate3d(0,0,0)`;
+        inner.style.transform = `translate3d(0,0,0)`;
+        el.addEventListener('transitionend',done);
+      })
+    },
+    afterDrop (el) {
+      let ball = this.dropBalls.shift();
+      if (ball) {
+        ball.show = false;
+        el.style.display = 'none'
+      }
+    },
+    empty () {},
+    hideList () {}
+  },
 }
 </script>
+
+
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/stylus/mixin.styl"
 
@@ -373,3 +383,4 @@ export default {
       opacity: 0
       background: rgba(7, 17, 27, 0)
 </style>
+
