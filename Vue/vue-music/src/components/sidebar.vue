@@ -5,11 +5,11 @@
         <div class="avatar">
           <img src="" alt="">
         </div>
-        <div class="name">蜗牛</div>
+        <div class="name">豪大大</div>
       </div>
       <div class="menu">
         <ul>
-          <li>
+          <li @click="_hidebar">
             <router-link to="/user" @click="_hidebar">
               <i class="icon">&#xe63c;</i>
               <span>个人中心</span>
@@ -48,20 +48,28 @@
         </ul>
       </div>
     </div>
+    <div class="sidebar_mask" @click="_hidebar" v-show="showSidebar"></div>
   </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
   data() {
     return {
-      showSidebar:true,
+      
     }
   },
   methods: {
     _hidebar(){
-
+      // dispatch 用来调用store里的方法
+      this.$store.dispatch('setShowSidebar',false)
     },
+  },
+  computed: {
+    ...mapGetters([
+      'showSidebar'
+    ])
   },
 }
 </script>
