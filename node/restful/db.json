@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "今天的雨真的快乐",
+      "author": "typecode"
+    },
+    {
+      "id": 2
+    },
+    {
+      "": "helloword",
+      "postId": "1",
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "雨天都不出来了",
+      "postId": 1
+    },
+    {
+      "": "最美不过西湖畔",
+      "postId": "1",
+      "id": 3
+    }
+  ],
+  "postfile": {
+    "name": "typecode"
+  }
+}

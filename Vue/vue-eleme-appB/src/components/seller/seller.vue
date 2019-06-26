@@ -4,10 +4,10 @@
       <div class="sellername">粥品香坊（回龙观）</div>
       <star></star>
       <span class="text">(24) 月售90单</span>
-      <!-- <div class="collect">
-        <img id='show' src="./dislike.png" @click="choose" />
+      <div class="collect">
+        <img id='show' src="./dislike.png" @click="choose" width="50px" height="50px"/>
         <span type="text">收藏</span>
-      </div> -->
+      </div>
       <div class="standard">
         <el-table :data="tableData" style="width: 100%">
           <el-table-column prop="deliveryprice" label="起送价" width="180"></el-table-column>
