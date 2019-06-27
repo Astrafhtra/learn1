@@ -2,7 +2,6 @@
   "pages": [
     "pages/report/index",
     "pages/index/index",
-    "pages/logs/logs",
     "pages/scanResult/index",
     "pages/billing/index",
     "pages/My/index"

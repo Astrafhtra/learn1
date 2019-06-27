@@ -25,28 +25,21 @@ Page({
             wx.request({
               url: 'https://www.easy-mock.com/mock/5cc02d8e1e38f0052b4bd927/getName/getName',
               success: (res) => {
-
-                // wx.showToast({
-                //   title: '获取密码成功',
-                //   icon: 'suceess',
-                //   duration:5000
-                // })
-
+                wx.showToast({
+                  title: '获取密码成功',
+                  icon: 'suceess',
+                  duration:2000
+                })
                 wx.hideLoading();
                 setTimeout(() => {
                   wx.redirectTo({
-
-
-
                     url: '../scanResult/index',
-                  
-                  },5000)
+                  }, 5000)
                 })
               }
             })
           },
           fail: () => {
-
           }
         })
       case 3:

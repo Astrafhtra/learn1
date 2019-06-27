@@ -2,7 +2,7 @@
 <view class="container">
   <view class="choose">
     <view class="title">请选择故障类型</view>
-    <checkbox-group bindchange="checkboxChange">
+    <checkbox-group bindchange="checkboxChange" class="select">
       <label class="checkbox" wx:for="{{items}}" wx:key="{{index}}">
         <checkbox value="{{item.value}}" checked="{{items.checked}}"/>
         {{item.value}}
@@ -10,14 +10,15 @@
     </checkbox-group>
   </view>
   <view class="action">
+    <image src='../../images/camera.png'></image>
     <view class="title">拍摄单车附件环境,便于寻找</view>
     <view class="action-photo">
-      <block wx:for="{{picUrls}}" wx:key="{{index}}">
-        <image src="{{item}}">
-          <icon type="cancel" size="18" color="red"/>
-        </image>
-      </block>
-        
+      <image src='../../images/camera-b.png'></image>
     </view>
+  </view>
+  <view class='submit'>
+    <input class="num" placeholder='车牌号(车牌损坏不用填)'></input>
+    <input placeholder='备注'></input>
+    <button>提交</button>
   </view>
 </view>

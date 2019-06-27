@@ -2,7 +2,7 @@
   <div class="search">
     <div class="search-box-wrapper">
       <!-- 搜索框 -->
-      <v-search-Box @query="onQueryChange"></v-search-Box>
+      <v-search-Box @query="onQueryChange" ref="searchBox"></v-search-Box>
     </div>
     <div class="shortcut-wrapper" ref="shortcutWrapper" v-show="!query">
       <v-scroll class="shortcut" ref="shortcut" :data="shortcut" :refreshDelay="refreshDelay">
@@ -25,14 +25,14 @@
               </span>
             </h1>
             <!-- 搜索历史列表 -->
-            <v-searches></v-searches>
+            <v-searches :searches="searchHistory" @select="addQuery"></v-searches>
           </div>
         </div>
       </v-scroll>
     </div>
     <!-- 搜索结果 -->
     <div class="search-result" v-show="query" ref="searchResult">
-      <v-suggest :query="query"></v-suggest>
+      <v-suggest :query="query" @listScroll="blurInput" @select="saveSearch" ref="suggest"></v-suggest>
     </div>
   </div>
 </template>
@@ -42,20 +42,16 @@ import searchbox from '@/components/searchBox'
 import scroll from '@/components/scroll'
 import searches from '@/components/search-list'
 import suggest from '@/components/suggest'
+import api from '@/api'
+import {mapGetters} from 'vuex'
+import {searchMixin} from '@/common/mixin.js'
 export default {
   data() {
       return{
-        searchHistory:[1],
-        query:'',
+        // searchHistory:[1],
         shortcut:[],
-        hotkey:[
-          {first:'许嵩新歌发布'},
-          {first:'张杰新歌发布'},
-          {first:'杰伦新歌发布'},
-          {first:'邓紫棋新歌发布'},
-          {first:'伍佰新歌发布'},
-        ],
-        refreshDelay:2
+        hotkey:[],
+        // refreshDelay:2
       }
   },
   components:{
@@ -64,15 +60,30 @@ export default {
     'v-searches':searches,
     'v-suggest':suggest
   },
+  computed: {
+    ...mapGetters([
+      'searchHistory'
+    ])
+  },
+  mixins:[searchMixin],
   methods: {
     showConfirm(){
 
     },
-    onQueryChange(query){
-      // console.log(query)
-      this.query = query
-    }
+    
+    _getHotKey(){
+      api.HotSearchKey().then((res)=>{
+        if(res.code === 200){
+          this.hotkey = res.result.hots.slice(0,10)
+          // console.log(res)
+        }
+      })
+    },
   },
+  created() {
+      this._getHotKey()
+    
+    },
 }
 </script>
 

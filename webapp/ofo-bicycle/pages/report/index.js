@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    picUrls:['../../images/avatar.png','../../images/location.png'],
+    picUrls:[],
     items:[
       {value:"车锁坏了"},
       {value:"违规乱停"},

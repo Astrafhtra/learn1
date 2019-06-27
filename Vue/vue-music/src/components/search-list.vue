@@ -17,7 +17,7 @@ export default {
   props:{
     searches:{
       type:Array,
-      default:['许嵩']
+      default:[]
     }
   },
   methods: {
