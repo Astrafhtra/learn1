@@ -1,5 +1,6 @@
 <!--pages/index/index.wxml-->
 <view class="container">
+  <image src='../../images/my.png'></image>
   <map id="ofoMap" latitude="{{latitude}}" 
   longitude="{{longitude}}" scale="{{scale}}"  
   markers="{{markers}}" controls="{{controls}}" 

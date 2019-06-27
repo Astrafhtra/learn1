@@ -64,7 +64,7 @@ Page({
           latitude: res.latitude
         })
       },
-    })
+    });
     // 3.设置地图控件的位置及大小，通过设备宽高定位
     wx.getSystemInfo({
       success: (res) => {
@@ -127,7 +127,7 @@ Page({
           ]
         })
       }
-    });
+    }); 
   },
 
   /**

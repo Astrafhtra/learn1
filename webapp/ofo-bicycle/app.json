@@ -1,16 +1,17 @@
 {
   "pages": [
-    "pages/report/index",
     "pages/index/index",
     "pages/scanResult/index",
     "pages/billing/index",
-    "pages/My/index"
+    "pages/My/index",
+    "pages/report/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#b9dd08",
     "navigationBarTitleText": "ofo共享单车",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
   },
   "permission": {
     "scope.userLocation": {
