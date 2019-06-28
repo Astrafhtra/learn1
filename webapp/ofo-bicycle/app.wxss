@@ -1,5 +1,5 @@
 /**app.wxss**/
-@import 'weui.wxss';
+@import './weui.wxss';
 .container {
   background-color: #f2f2f2;
 	height: 100vh;

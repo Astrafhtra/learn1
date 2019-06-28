@@ -11,7 +11,7 @@ Page({
     //   this.data.password += arr[pos];
     // }
     this.setData({
-      password: (Math.ceil(Math.random() * 10)).toString() + Math.ceil(Math.random() * 10) + (Math.ceil(Math.random() * 10)).toString() + Math.ceil(Math.random() * 10) 
+      password: Math.ceil((Math.random() * 9 + 1)*1000) 
     })
     success: wx.showToast({
       title: '获取密码成功',

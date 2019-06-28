@@ -1,23 +1,9 @@
-// components/navBar/navBar.js
-Component({
-  /**
-   * 组件的属性列表
-   */
-  properties: {
-
-  },
-
-  /**
-   * 组件的初始数据
-   */
+// 需要设置slider的宽度，用于计算中间位置
+Page({
   data: {
-
+    
   },
-
-  /**
-   * 组件的方法列表
-   */
-  methods: {
-
-  }
-})
+  onLoad: function () {
+    
+  },
+});

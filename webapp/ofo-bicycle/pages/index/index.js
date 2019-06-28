@@ -6,7 +6,7 @@ Page({
    */
   data: {
     latitude: 0,
-    longitude: 0,
+    longitude:0,
     scale: '18'
   },
   bindcontroltap: function(e) {
@@ -21,7 +21,6 @@ Page({
             wx.showLoading({
               title: '正在获取密码',
             })
-            console.log(111)
             wx.request({
               url: 'https://www.easy-mock.com/mock/5cc02d8e1e38f0052b4bd927/getName/getName',
               success: (res) => {
@@ -42,10 +41,12 @@ Page({
           fail: () => {
           }
         })
+        break;
       case 3:
         wx.navigateTo({
           url: '../report/index',
         })
+        break;
       case 5:
         wx.navigateTo({
           url: '../My/index',
@@ -63,6 +64,7 @@ Page({
           longitude: res.longitude,
           latitude: res.latitude
         })
+        console.log(res)
       },
     });
     // 3.设置地图控件的位置及大小，通过设备宽高定位

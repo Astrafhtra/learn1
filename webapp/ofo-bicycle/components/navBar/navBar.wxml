@@ -1,2 +1,6 @@
 <!--components/navBar/navBar.wxml-->
-<text>components/navBar/navBar.wxml</text>
+<view class="page">
+  <view class='navBar'>
+    <image src="../../images/my.png"></image>
+  </view>
+</view>
