@@ -17,7 +17,7 @@ Page({
       },
       endride(e){
         wx.navigateTo({
-          url: '',
+          url: '../index/index',
         })
       },
       /**

@@ -1,4 +1,5 @@
 // pages/index/index.js
+var QQMapWX = require('../../qqmap/qqmap-wx-jssdk.js')
 Page({
 
   /**
@@ -57,15 +58,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+   var that = this
+   var qqmapsdk = new QQMapWX({
+      key:'wx0cdb69dde7630671'
+    })
     wx.getLocation({
-      type: "gcj02",
-      success: (res) => {
-        this.setData({
-          longitude: res.longitude,
-          latitude: res.latitude
+      type: 'gcj02', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
+      success: (res)=>{
+        qqmapsdk.reverseGeocoder({
+          latitude: res.latitude,
+          longitude: res.longitude
         })
-        console.log(res)
-      },
+        console.log(res);
+      }
     });
     // 3.设置地图控件的位置及大小，通过设备宽高定位
     wx.getSystemInfo({
