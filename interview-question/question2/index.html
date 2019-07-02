@@ -17,7 +17,7 @@
       }
     }
     // var b = a.fn
-    //b() //undefined
+    //b() //undefind
 
     // var b = a.fn
     // b.call(a,5) //蜗牛
@@ -28,7 +28,22 @@
     // n=5,m=3
     var c = b.bind(a,4)
     c(3,4)//蜗牛,8
+
+
     // a.fn() //蜗牛
+
+    Function.prototype.call = function(){
+      let [thisArg,...args] = [...arguments]
+      if(!thisArg){
+        thisArg = typeof window === 'undefind' ? global : window
+      }
+      // this的指向是当前函数 func.call 
+      this.Args.func = this
+      // 执行函数
+      let result = thisArg.func(...args)
+      delete thisArg.func //thisArg并没有func属性,因此需要移除
+      return result
+    }
   </script>
 </body>
 </html>

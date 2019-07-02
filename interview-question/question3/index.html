@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- js中的浅拷贝和深拷贝 -->
+  <!-- <script>
+    // 解构
+    function example(){
+      return [1,2,3]
+    }
+    // es6解构
+    let [a,b,c] = example()
+    console.log(a)//1
+    let [x,y] = [1,2]
+    // 对象的解构
+    let {foo , bar } = {foo:"1111",bar:"2222"}
+    console.log(foo)//1111
+    // abc传值给foo，foo重新命名为baz
+    let {foo:baz} = {foo:"abc"}
+    console.log(baz)//abc
+  </script> -->
+
+
+
+  <!-- <script>
+    // 浅拷贝  受原来数据的影响,随着改变而改变
+    let obj = {
+      name:'蜗牛',
+      age:18,
+      like:['sing','rap']
+    }
+    obj.name = '标哥'
+    obj.like.push('coding')
+    // let obj2 = Object.assign({},obj)
+    // let obj3 = Object.assign(obj2,like)
+
+    // assign 对象拼接
+    let obj4 = Object.assign({},obj)
+    let obj5 = {...obj}
+    console.log(obj5)//name='标哥'
+  </script> -->
+
+
+  <!-- 深拷贝 -->
+  <!-- <script>
+    let obj = {
+      name:'蜗牛',
+      age:18,
+      like:['sing','rap']
+    }
+    // JSON.stringify把对象转成字符串
+    let obj6 = JSON.parse(JSON.stringify(obj))
+    obj.name = '标哥'
+    console.log(obj6)//name:'蜗牛'
+  </script> -->
+
+
+  <!-- 深拷贝原理 -->
+  <script>
+    function deepClone(obj,hash = new WeakMap()){//递归拷贝
+      if(obj instanceof RegExp){
+        return RegExp(obj)
+      }
+      if(obj instanceof Date){
+        return Date(obj)
+      }
+      if(obj === null || typeof obj !== 'object'){
+        // 如果不是复杂的数据类型,直接返回
+        return obj
+      }
+      if(hash.has(obj)){
+        return hash.get(obj)
+      }
+      // 如果obj是数组,那么obj.constructor是(function:Array)
+      // 如果obj是对象,那么obj.constructor是(function:Object)
+      let t = new obj.constructor()
+      hash.set(obj,t)
+      for(let key in obj){
+        // 递归
+        if(obj.hasOwnProperty(key)){
+          t[key] = deepClone(obj[key],hash)
+        }
+      }
+      return t
+    }
+  </script>
+</body>
+</html>
