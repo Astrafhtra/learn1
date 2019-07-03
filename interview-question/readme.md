@@ -34,3 +34,58 @@
       1. 能够访问函数定义时所在的词法作用域(阻止其被回收)
       2. 私有化变量
       3. 模拟块级作用域
+
+
+## q5 数组去重
+  - Set  
+    function uniq(arr){
+      return [...new Set(arr)]
+    }
+    console.log(uniq([1,2,3,2,3,5]))
+
+  - indexof
+    function uniq(arr){
+        let result = []
+        for(let i=0;i<arr.length;i++){
+          if(result.indexOf(arr[i]) === -1){
+            result.push(arr[i])
+          }
+        }
+        return result
+      }
+      console.log(uniq([1,2,3,2,3,5]))
+
+  - includes 
+    function uniq(arr){
+        let result = []
+        for(let i=0;i<arr.length;i++){
+          if(!result.includes(arr[i])){
+            result.push(arr[i])
+          }
+        }
+        return result
+      }
+      console.log(uniq([1,2,3,2,3,5]))
+
+  - map.set
+    function uniq(arr){
+            let map = new Map()
+            let result = new Array()
+            for(let i=0;i<arr.length;i++){
+              if(map.has(arr[i])){
+                // 把arr[i]都map遍历下(key,value),若key为true时候不push进result
+                map.set(arr[i],true)
+              }else{
+                map.set(arr[i],false)
+                result.push(arr[i])
+              }
+            }
+            return result
+          }
+          console.log(uniq([1,2,3,2,3,5]))
+
+  - reduce
+    function uniq(arr){
+              return arr.reduce((prev,cur)=> prev.includes(cur)? prev : [...prev,cur],[])
+            }
+            console.log(uniq([1,2,3,2,3,5]))
