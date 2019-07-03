@@ -89,3 +89,5 @@
               return arr.reduce((prev,cur)=> prev.includes(cur)? prev : [...prev,cur],[])
             }
             console.log(uniq([1,2,3,2,3,5]))
+
+## q6 防抖节流函数原理
