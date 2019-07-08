@@ -15,7 +15,7 @@
       <router-view></router-view>
     </keep-alive>
     <!-- 播放组件 play -->
-    <play></play>
+    <play></play> 
     <!-- sidebar -->
     <sidebar></sidebar>
   </div>

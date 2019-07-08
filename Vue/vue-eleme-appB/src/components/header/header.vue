@@ -72,9 +72,10 @@ export default {
   name: 'Header',
   props: {
     seller: {
-      type: Object
+      type: Object,
     }
   },
+  
   data () {
     return {
       classMap: [],
