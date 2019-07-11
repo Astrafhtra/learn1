@@ -24,9 +24,16 @@ router.get('/api/post', async function (ctx) {
   console.log('cookies', ctx.cookies.get('name')); 
   ctx.body = [
     { title: 'node.js 入门到精通', createTime: '2018-12-12' },
-    { title: 'php 精通到放弃', createTime: '2018-11-11' },
+    { title: 'php 从精通到放弃', createTime: '2018-11-11' },
   ]
 });
+router.get('/api/jsonp',async (ctx)=>{
+  const cb = ctx.request.query.callback;
+  const person = {
+    name:'name1',age:18
+  }
+  ctx.body = `${cb}(${JSON.stringify(person)})`;
+})
 app
   .use(router.routes())
   .use(router.allowedMethods());
