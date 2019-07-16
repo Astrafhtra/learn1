@@ -1,4 +1,4 @@
-function bubble_sort(arr) {
+function select_sort(arr) {
   let len = arr.length;
   var minIndex, temp;
   for (let i = 0; i < len - 1; i++) {
@@ -16,4 +16,4 @@ function bubble_sort(arr) {
 }
 // 每次让一个数排好,两两交换位置
 const arr = [8, 2, 5, 9, 7];
-console.log(bubble_sort(arr))
+console.log(select_sort(arr))
