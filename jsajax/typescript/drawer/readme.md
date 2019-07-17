@@ -1,0 +1,1 @@
+tsc --watch main.ts 持续编译
