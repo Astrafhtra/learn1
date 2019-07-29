@@ -62,3 +62,36 @@ var request = (options)=>{
     throw err
   })
 }
+
+//封装http请求方式
+export const http = {}
+const methods = ['get','post','put','delete']
+methods.forEach (method=>{
+  http[method] = (url,params = {})=>{
+    if(method === 'get'){
+      return request({url,params,method})
+    }
+    return request({url,body:stringify(params),method})
+  }
+}) 
+
+export default function plugin (Vue){
+  if(plugin.installed){
+    return
+  }
+  plugin.installed = true
+  // defineProperties 在一个对象上新增或修改原有属性,并返回该新的属性
+  Object.defineProperties(Vue.prototype,{
+    $http:{
+      get() {
+        const obj = {
+          get: http['get'],
+          get: http['post'],
+          get: http['put'],
+          get: http['delete'],
+        }
+        return obj
+      }
+    }
+  })
+}
