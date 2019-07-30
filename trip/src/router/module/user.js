@@ -2,11 +2,10 @@ const tripUser = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/view/user/login'),
+    component: () => import('@/views/user/login'),
     meta: {
       title: '登录'
     }
   }
 ]
-
-export default tripUser;
+export default tripUser
