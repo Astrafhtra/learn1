@@ -13,4 +13,4 @@ let tmpl = `
     <p>{{age}}</p>
   </div>
 `
-console.log(render(render(tmpl,{'name':'豪大大','age':18})))
+console.log(render(tmpl,{'name':'豪大大','age':18}))
