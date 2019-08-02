@@ -6,7 +6,6 @@
 
 <script>
 import BScroll from 'better-scroll'
-
 const DIRECTION_H = 'horizontal'
 const DIRECTION_V = 'vertical'
 

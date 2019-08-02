@@ -149,3 +149,5 @@
   2. onmousemove
   3. onmouseup
   4. 控制开关
+
+## q16类的创建和继承
