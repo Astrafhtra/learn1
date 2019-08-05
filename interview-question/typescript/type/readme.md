@@ -1,0 +1,1 @@
+tsc --watch fileName 编译.ts文件
