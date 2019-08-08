@@ -88,8 +88,8 @@
   - reduce
     function uniq(arr){
               return arr.reduce((prev,cur)=> prev.includes(cur)? prev : [...prev,cur],[])
-            }
-            console.log(uniq([1,2,3,2,3,5]))
+    }
+    console.log(uniq([1,2,3,2,3,5]))
 ```
 
 ## q6 防抖节流函数原理
@@ -164,3 +164,36 @@
   1. Cookie 数据始终在同源的http请求中携带(即使不需要),即cookie在浏览器和服务器之间来回传递,而sessionStorage和localStorage不会自动把数据发给服务器,仅在本地保存,cookie还有(path)概念,可以限制cookie只属于某个路径下,存储大小只有4k左右
   2. sessionStorage:仅在当前浏览器窗口关闭前有效,不能长久保存
   3. localStorage:在所有的同源窗口都是共享的,cookie也是在所有同源窗口共享的,localStorage大小在5M左右
+
+
+## q19
+  函数表达式与函数声明不同,函数声明只在函数内部有效,并且此时
+  不能对常量进行赋值
+  ```js
+    var a=10;
+    (function a(){
+      a = 10;
+      console.log(a)//报错 a not a function
+    /*等价于
+    const a = function(){}
+    a = 20
+    */
+    })()
+
+    var a=10;
+    (function a(){
+     let a = 20;
+      console.log(a)//20
+    })()
+  ```
+  ## q20 浏览器的重回和回流
+    浏览器渲染页面的过程
+      1. 解析HTML,生成DOM树,解析CSS,生成CSSOM(css dom树)树
+      2. 将DOM树和CSSOM树结合生成render树
+      3. 回流:拒绝生成render树,进行回流,得到结点的几何信息
+      4. 重绘:根据render树和回流得到的信息,得到结点的绝对像素
+      5. 将像素发给GPU(浏览器的引擎),展示在页面上
+
+  ## q21子组件能否修改接收到的props里面的值
+    不能
+    为了能保证数据的单向流动,便于数据的追踪,避免数据混乱

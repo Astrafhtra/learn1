@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var array = [1,1,'1','1']
+    function unique(array){
+      // return [... new Set(array)];
+      // -----------------------------------
+      // return array.reduce((pre,cur)=>pre.includes(cur)?pre:[...pre,cur],[])
+      // ------------------------------------
+      // var res = [];
+      // for(let i=0;i<array.length;i++){
+      //   if(res.indexOf(array[i]) === -1){
+        // if(!res.includes(array[i])){
+      //     res.push(array[i])
+      //   }
+      // }
+      // return res
+      // --------------------------------------
+      var map = new Map();
+      var res = [];
+      for(let i=0;i<array.length;i++){
+        if(map.has(array[i])){
+          map.set(array[i],true)
+        }else{
+          map.set(array[i],false)
+          res.push(array[i])
+        }
+      }
+      return res
+    }
+    console.log(unique(array))
+  </script>
+</body>
+</html>
